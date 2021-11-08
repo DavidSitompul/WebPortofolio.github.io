@@ -179,18 +179,18 @@
             <form>
               <div class="mb-3">
                 <label for="Name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="Name" aria-describedby="Name" />
+                <input type="text" class="form-control" id="Name" aria-describedby="name" name="nama"/>
               </div>
               <div class="mb-3">
                 <label for="Email" class="form-label">Email </label>
-                <input type="email" class="form-control" id="Email" aria-describedby="Email" />
+                <input type="email" class="form-control" id="Email" aria-describedby="email" name="email" />
               </div>
               <div class="mb-3">
                 <label for="Pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="Pesan" rows="3"></textarea>
+                <textarea class="form-control" id="pesan" name="pesan" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Kirim</button>
-            </form>
+            </form name="submit-to-google-sheet">
           </div>
         </div>
       </div>
@@ -210,5 +210,19 @@
     </footer>
     <!--Akhir Footer-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!--script komen-->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwi-8Sy6Qrt_wR90kpxv_bM6y9aZW8Fvnwnscq14Q0C0JKkQ-5SI7JPtkQyNAzooNYgbw/exec';
+      const form = document.forms['submit-to-google-sheet'];
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => console.log('Success!', response))
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
+    <!--akhir komen script-->
   </body>
 </html>
