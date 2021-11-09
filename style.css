@@ -10,3 +10,10 @@
 section {
   padding-top: 5rem;
 }
+.Hobby-img {
+  width: 100%;
+}
+
+#Hobby .row > * {
+  padding: 0;
+}
